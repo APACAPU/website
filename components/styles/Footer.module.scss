@@ -1,0 +1,18 @@
+@import '/styles/variables.module.scss';
+
+.social-icon {
+  border: 2px solid $secondary;
+  display: inline-flex;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: $secondary;
+  transition: background-color 200ms linear, color 200ms linear;
+  &:hover {
+    background-color: $secondary;
+    color: $light;
+  }
+}

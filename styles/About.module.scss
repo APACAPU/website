@@ -1,0 +1,182 @@
+@import './variables.module.scss';
+
+.wrapper {
+  section {
+    @include section;
+  }
+  #section1 {
+    padding-top: 1.5rem;
+    background-color: rgba(226, 239, 255, 0.2);
+  }
+  #section2 {
+    background-color: rgba(226, 239, 255, 0.2);
+    .quote-wrapper {
+      .blockquote {
+        display: inline-block;
+        margin-left: auto;
+        text-align: left;
+        padding: 20px 0;
+        background-color: rgba(226, 239, 255, 0.5);
+        border-radius: 8px;
+        p {
+          font-size: 1.8rem;
+          position: relative;
+          display: inline-block;
+          text-align: left;
+          padding-left: 6rem;
+          padding-right: 6rem;
+          &::before {
+            content: '“';
+            font-family: "Times New Roman", sans-serif;
+            position: absolute;
+            left: 2rem;
+            color: $primary;
+            font-size: 5rem;
+            top: 1.2rem;
+            line-height: 1rem;
+          }
+          &::after {
+            content: '”';
+            font-family: "Times New Roman", sans-serif;
+            position: absolute;
+            color: $primary;
+            font-size: 5rem;
+            line-height: 1px;
+            top: 1.2rem;
+            right: 2rem;
+          }
+        }
+        .founders {
+          position: relative;
+          margin-left: 7rem;
+          margin-top: 1rem;
+          display: inline-block;
+          font-size: 1.4rem;
+          font-weight: bold;
+          &::before {
+            content: '–';
+            position: absolute;
+            left: -.8em;
+          }
+        }
+      }
+    }
+    .half {
+      flex-basis: 50%;
+      text-align: center;
+      padding: 0 5rem;
+      .text {
+        padding: 0.5rem 0;
+        font-size: 1.4rem;
+        color: dimgray;
+      }
+    }
+  }
+  #section3 {
+    h2 {
+      text-align: center;
+      font-size: 3.5rem;
+    }
+  }
+  #section4 {
+    h2 {
+      margin-bottom: 3rem;
+      text-align: center;
+      font-size: 3.5rem;
+    }
+    .card-wrapper {
+      padding-left: 30px;
+      .cards {
+        background-color: #EDF5FF;
+        padding: 30px 20px 30px;
+        width: 100%;
+        border-radius: 8px;
+        flex-basis: 260px;
+        flex-grow: 0;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        transition: box-shadow 200ms ease-in;
+        cursor: pointer;
+        &:hover{
+          box-shadow: 0 0 8px 1px $primary;
+          .image {
+            border-radius: 0;
+            box-shadow: 0 0 4px 0 $accent;
+          }
+          .arrow {
+            background-color: $accent;
+            color: white;
+            transform: scale(1.2);
+          }
+        }
+        .image {
+          border-radius: 50%;
+          transition: border-radius 150ms linear, box-shadow 150ms linear 150ms;
+          box-shadow: 0 0 2px 0 gray;
+        }
+        .arrow {
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          font-size: 28px;
+          padding: 6px;
+          color: white;
+          background-color: $secondary;
+          transform-origin: top left;
+          border-radius: 50%;
+          transition: all 250ms linear;
+        }
+        h3 {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper #section2{
+    .quote-wrapper {
+      margin-top: 0;
+      .blockquote {
+        p {
+          font-size: 1.4rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          &::before {
+            font-size: 3rem;
+            left: 5px;
+            top: 0;
+          }
+          &::after {
+            font-size: 3rem;
+            right: 5px;
+            bottom: 0;
+            top: unset;
+          }
+        }
+        .founders {
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapper #section2{
+    .half {
+      flex-basis: 100%;
+      padding: 0 2rem;
+      margin-bottom: 30px;
+    }
+  }
+  #section4 {
+    .card-wrapper {
+      padding-left: 0;
+      .cards {
+        margin-right: 0;
+      }
+    }
+  }
+}

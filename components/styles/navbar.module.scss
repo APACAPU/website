@@ -1,0 +1,118 @@
+@import '/styles/variables.module.scss';
+
+.navbar {
+  box-shadow: 0 -2px 5px 1px #999;
+  z-index: 10;
+  transition: height 300ms ease-in;
+  top: 0;
+  .navbar-link {
+    margin-left: 30px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    &.active span {
+      color: $dark !important;
+      &::after {
+        background: $dark !important;
+      }
+    }
+    span {
+      color: $secondary;
+      &:hover {
+        color: $primary;
+      }
+      &::after {
+        background: $primary;
+      }
+    }
+  }
+  .reg-btn {
+    font-family: Roboto, sans-serif;
+    letter-spacing: 2px;
+  }
+  .nav-btn-wrapper {
+    margin-left: 20px;
+    .nav-btn {
+      display: inline-block;
+      width: 25px;
+      height: 3px;
+      position: relative;
+      background-color: gray;
+      transition: background-color 300ms linear;
+
+      &::after {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background-color: gray;
+        position: absolute;
+        top: -7px;
+        left: 0;
+        transition: transform 200ms linear, top 150ms ease-in 200ms;
+      }
+
+      &::before {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background-color: gray;
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        transition: transform 200ms linear, bottom 150ms ease-in 200ms;
+      }
+
+      &.open {
+        background-color: #00000000;
+        &::after {
+          top: 0;
+          transform: rotate(-45deg);
+          transition: top 150ms ease-in, transform 200ms linear 150ms;
+        }
+        &::before {
+          bottom: 0;
+          transform: rotate(45deg);
+          transition: bottom 150ms ease-in, transform 200ms linear 150ms;
+        }
+      }
+    }
+  }
+  .dropdown {
+    opacity: 0;
+    display: flex;
+    visibility: hidden;
+    transition: opacity 150ms 300ms ease-in;
+    border-top: 2px solid lightgray;
+    padding-top: 60px;
+    overflow-y: scroll;
+    .navbar-link-wrapper {
+      overflow: hidden;
+      position: relative;
+
+      .navbar-link {
+        margin-left: 0;
+        font-size: 2.5rem;
+        display: block;
+        transform: translateY(48px);
+        transition: transform 250ms 450ms ease-out;
+      }
+    }
+    &.opening {
+      visibility: visible;
+      opacity: 1;
+      .navbar-link-wrapper {
+        .navbar-link {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.shadow {
+  box-shadow: 0 -2px 10px 1px #999;
+}
+
+@media (max-width: 600px) {
+
+}

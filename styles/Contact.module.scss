@@ -1,0 +1,33 @@
+@import './variables.module.scss';
+
+.wrapper {
+  section {
+    @include section;
+    &:first-of-type {
+      padding-top: 1.5rem;
+    }
+  }
+  .form {
+    margin: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.19), 0 2px 4px rgba(0,0,0,0.23);
+    padding: 2rem;
+    border-radius: 5px;
+    transition: box-shadow 150ms ease-in;
+    .red {
+      color: salmon;
+      display: inline-block;
+      margin-left: 5px;
+    }
+    &:focus-within {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.19), 0 4px 8px rgba(0,0,0,0.23);
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .wrapper {
+    .form {
+      margin: 3rem 0 0;
+    }
+  }
+}

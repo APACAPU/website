@@ -1,0 +1,17 @@
+@import '/styles/variables.module.scss';
+
+.close-btn {
+  font-size: 40px;
+  color: $accent;
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 200ms linear, color 300ms linear;
+  cursor: pointer;
+  &:hover {
+    transform: rotate(90deg);
+    color: $accent-hover
+  }
+}

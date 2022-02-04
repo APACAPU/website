@@ -1,0 +1,11 @@
+@import './variables.module.scss';
+
+.wrapper {
+  section {
+    @include section;
+    &:first-of-type {
+      padding-top: 1.5rem;
+      background-color: rgba(226, 239, 255, 0.2);
+    }
+  }
+}

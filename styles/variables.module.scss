@@ -1,0 +1,32 @@
+$primary: #7AAEFD;
+$secondary: #247AFD;
+$light: rgba(226, 239, 255);
+$dark: #003c89;
+$deep-blue: #115ecd;
+$accent: #ff9600;
+$accent-hover: #D2691E;
+$smoke: #F5F5F7;
+
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  light: $light;
+  dark: $dark;
+  deep-blue: $deep-blue;
+  accent: $accent;
+  smoke: $smoke;
+}
+
+@mixin section {
+  padding: 4rem;
+  @media only screen and (max-width: 600px) {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@mixin tinySection {
+  padding: 0 4rem;
+  @media only screen and (max-width: 600px) {
+    padding: 0 1.5rem;
+  }
+}

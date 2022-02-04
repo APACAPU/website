@@ -1,14 +1,68 @@
 @import './variables.module.scss';
 .container {
-  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.container section {
+  @include section;
+  position: relative;
+  min-height: 80vh;
+}
+.section-title {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 28px;
+  margin-left: -2rem;
+  margin-bottom: 1rem;
+  .num {
+    color: $secondary;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+    width: calc(20px + 2rem);
+    left: -2rem;
+    background-color: $dark;
+  }
 }
 #section1 {
-  background: linear-gradient(to bottom right, #fff 0%, #fff 50%, $light 50%, $light 100%);
+  @include section;
+  position: relative;
+}
+#section2 {
+  @include section;
+  .section-content {
+    font-size: 1.825rem;
+  }
+}
+#section3 {
+
+}
+#section1::after {
+  background-color: $light;
+  opacity: 0.4;
+  height: 100%;
+  content: '';
+  position: absolute;
+  left: -2rem;
+  right: -2rem;
+  top: 0;
+  z-index: -1;
 }
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .section-title {
+    margin-left: -0.5rem;
+  }
+  #section2 {
+    .section-content {
+      font-size: 1.4rem;
+    }
   }
 }

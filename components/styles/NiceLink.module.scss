@@ -1,0 +1,31 @@
+@import '/styles/variables.module.scss';
+
+.nice-link {
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+  cursor: pointer;
+  color: $accent;
+  display: inline-flex;
+  align-items: center;
+}
+.nice-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: $accent-hover;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
+}
+.nice-link:hover::after {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
+}
+.nice-link:hover {
+  color: $accent-hover;
+}

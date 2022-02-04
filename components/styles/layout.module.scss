@@ -1,0 +1,7 @@
+.wrapper {
+  transition: opacity 250ms ease-out;
+  opacity: 1;
+  &.changing {
+    opacity: 0;
+  }
+}
