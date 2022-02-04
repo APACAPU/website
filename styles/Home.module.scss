@@ -1,0 +1,14 @@
+@import './variables.module.scss';
+.container {
+  padding: 0 2rem;
+}
+#section1 {
+  background: linear-gradient(to bottom right, #fff 0%, #fff 50%, $light 50%, $light 100%);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
