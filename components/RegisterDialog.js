@@ -8,11 +8,14 @@ import {
     ModalHeader,
     ModalOverlay,
     Textarea,
-    Text, FormErrorMessage, Button
+    Text, FormErrorMessage, Button, useDisclosure
 } from "@chakra-ui/react";
 import styles from "./styles/RegisterDialog.module.scss";
 import {AiFillCloseCircle} from "react-icons/ai";
 import {useForm} from "react-hook-form";
+import axios from "axios";
+import InfoDialog from "./InfoDialog";
+import {useState} from "react";
 
 export default function RegisterDialog(props) {
     const {
@@ -22,15 +25,37 @@ export default function RegisterDialog(props) {
         reset
     } = useForm();
 
+    const {isOpen, onOpen, onClose} = useDisclosure();
+    const [message, setMessage] = useState("");
+    const [state, setState] = useState(false);
+
     function onSubmit(values) {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                reset();
-                props.onClose();
-                resolve();
-            }, 3000);
+        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/register", values)
+            .then((response) => {
+                if (response.status == 201) {
+                    setMessage("Registered successfully! Please wait while we process your request, and we will " +
+                        "send an email to notify you shortly.");
+                    setState(true);
+                    onOpen();
+                    reset();
+                } else {
+                    throw "Something went wrong!";
+                }
+            }).catch((e) => {
+            setMessage("Something went wrong, please try again shortly!");
+            setState(false);
+            onOpen();
         });
+    }
+
+    const customClose = () => {
+        onClose();
+        setMessage("");
+        if (state) {
+            reset();
+            props.onClose();
+        }
+
     }
 
     return (
@@ -113,7 +138,7 @@ export default function RegisterDialog(props) {
                                            {...register("phone", {
                                                required: "This is required",
                                            })}/>
-                                    <FormHelperText>You'll get to join our APAC member Whatsapp Group.</FormHelperText>
+                                    <FormHelperText>You&apos;ll get to join our APAC member Whatsapp Group.</FormHelperText>
                                     <FormErrorMessage>
                                         {errors.phone && errors.phone.message}
                                     </FormErrorMessage>
@@ -138,6 +163,7 @@ export default function RegisterDialog(props) {
                     </ModalBody>
                 </ModalContent>
             </Modal>
+            <InfoDialog message={message} isOpen={isOpen} onClose={customClose} state={state}/>
         </>
     )
 }

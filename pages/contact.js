@@ -15,6 +15,7 @@ import styles from '/styles/Contact.module.scss';
 import {useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
 import InfoDialog from "../components/InfoDialog";
+import axios from "axios";
 
 export default function Contact() {
     const {
@@ -30,21 +31,31 @@ export default function Contact() {
     const [state, setState] = useState(false);
 
     const customClose = () => {
-        // reset();
         setMessage("");
         setState(false);
-        onClose();
+        if (state) {
+            reset();
+            onClose();
+        }
     }
 
-    const onSubmit = (values) =>{
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                setMessage(JSON.stringify(values, null, 2));
-                setState(false);
-                onOpen();
-                resolve();
-            }, 30);
-        });
+    function onSubmit(values) {
+        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/message", values)
+            .then((response) => {
+                if (response.status == 201) {
+                    setMessage("We have received you message! Please give us some time to process the message before" +
+                        " we get back to you.");
+                    setState(true);
+                    onOpen();
+                    reset();
+                } else {
+                    throw "Something went wrong!";
+                }
+            }).catch((e) => {
+            setMessage("Something went wrong, please try again shortly!");
+            setState(false);
+            onOpen();
+        })
     }
     return (
         <>

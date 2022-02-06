@@ -22,7 +22,8 @@ export default function InfoDialog(props) {
                     <ModalBody display={'flex'} flexDirection={'column'} px={'50px'}>
                         <Text>{props.message}</Text>
                         <Button mb={'40px'} mt={'30px'} colorScheme={props.state ? 'success' : "error"}
-                                _focus={{shadow: `0 0 2px 3px ${props.state ? '#50d28a' : '#ff978c'}`}}>OK</Button>
+                                _focus={{shadow: `0 0 2px 3px ${props.state ? '#50d28a' : '#ff978c'}`}}
+                                onClick={props.onClose}>OK</Button>
                     </ModalBody>
                 </ModalContent>
             </Modal>
