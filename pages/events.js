@@ -1,6 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Events.module.scss";
-import {Box, Flex, Heading, Image, Text} from "@chakra-ui/react";
+import {Box, Button, Divider, Flex, Grid, Heading, Icon, Image, Link, Text} from "@chakra-ui/react";
+import events from "../data/Events";
+import {ImCalendar} from "react-icons/im";
 
 export default function Events() {
     return (
@@ -15,13 +17,46 @@ export default function Events() {
                     <Flex flexWrap={'wrap'}>
                         <Flex flexBasis={{lg: '60%', base: '100%'}} flexDirection={'column'} justify={'center'} align={'center'}>
                             <Heading as={'h1'}fontSize={{base: '3rem', md: '5rem'}} letterSpacing={'4px'}
-                                     textTransform={"uppercase"} mb={'1rem'}>Our Events</Heading>
+                                     textTransform={"uppercase"} mb={'1rem'} textAlign={{base: 'center', md: 'left'}}>Our Events</Heading>
                             <Text fontSize={{base: '1.5rem', md: '2.5rem'}} mb={{base: '2rem', lg: 0}} textAlign={'center'}>The events that have been held by APAC</Text>
                         </Flex>
                         <Box flexBasis={{lg: '40%', base: '100%'}}>
                             <Image src={'/event/event.svg'} width={'80%'} mx={'auto'} alt={'Event SVG Picture'}/>
                         </Box>
                     </Flex>
+                </section>
+                <section className={styles.events}>
+                    {
+                        Object.keys(events).map((year, idx) => {
+                            return (
+                                <Box key={idx} py={"1rem"}>
+                                    <Heading as={'h2'} textAlign={'center'} fontSize={'4rem'} mb={'1rem'}>{year}</Heading>
+                                    <Grid templateColumns={{lg: 'repeat(3, 1fr)', md: 'repeat(2, 1fr)', base: 'repeat(1, 1fr)'}} gap={"30px"} className={styles['event-rows']}>
+                                        {
+                                            events[year].map((event, idx) => {
+                                                return (
+                                                    <Box key={idx} className={styles.eventCol}>
+                                                        <Image src={event.img} fallbackSrc={event.lazy} alt={event.name} w={'100%'}/>
+                                                        <Box>
+                                                            <Flex align={'center'} color={'gray.600'} fontSize={'0.8rem'}><Icon as={ImCalendar} mr={'5px'}/>{event.date}</Flex>
+                                                            <Heading as={'h4'} fontSize={'1.4rem'} mt={'10px'}>{event.name}</Heading>
+                                                            <Text mt={'8px'}>{event.description}</Text>
+                                                            <Box textAlign={'center'} mt={'1rem'}>
+                                                                <Link href={event.link} target={'_blank'}>
+                                                                    <Button colorScheme={'accent'} _focus={{shadow: '0 0 2px 3px darkorange'}}>Learn More</Button>
+                                                                </Link>
+                                                            </Box>
+                                                        </Box>
+                                                    </Box>
+                                                    )
+                                            })
+                                        }
+                                    </Grid>
+                                    <Divider my={'3.5rem'} w={'40%'} mx={'auto'} borderBottomWidth={'5px'}/>
+                                </Box>
+                            )
+                        })
+                    }
                 </section>
             </div>
         </>

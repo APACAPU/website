@@ -1,4 +1,14 @@
-import {Box, Button, Divider, Flex, Image, Spacer, useDisclosure} from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    CircularProgress,
+    CircularProgressLabel,
+    Divider,
+    Flex, Icon,
+    Image,
+    Spacer,
+    useDisclosure
+} from "@chakra-ui/react";
 import styles from './styles/navbar.module.scss';
 import {useEffect, useState} from "react";
 import Link from "next/link";
@@ -6,6 +16,7 @@ import NiceLink from "./NiceLink";
 import {useRouter} from "next/router";
 import variables from '../styles/variables.module.scss';
 import RegisterDialog from "./RegisterDialog";
+import {TiArrowUpThick} from "react-icons/ti";
 
 const DesktopNav = props => {
     return (
@@ -65,11 +76,17 @@ export default function Navbar() {
     const [offset, setOffset] = useState(0);
     const {isOpen, onOpen, onClose} = useDisclosure();
 
+    const [scrollProgress, setScrollProgress] = useState(0);
+
     const router = useRouter();
 
     useEffect(() => {
         const onScroll = () => {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
             setOffset(window.scrollY);
+            setScrollProgress(scrolled);
         }
         // clean up code
         window.removeEventListener('scroll', onScroll);
@@ -77,12 +94,29 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    const goTop = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
+
     return (
-        <nav>
-            <DesktopNav router={router} offset={offset} openRegister={onOpen}/>
-            <MobileNav router={router} offset={offset} openRegister={onOpen}/>
-            <RegisterDialog onOpen={onOpen} onClose={onClose} isOpen={isOpen}/>
-        </nav>
+        <>
+            <nav>
+                <DesktopNav router={router} offset={offset} openRegister={onOpen}/>
+                <MobileNav router={router} offset={offset} openRegister={onOpen}/>
+                <RegisterDialog onOpen={onOpen} onClose={onClose} isOpen={isOpen}/>
+            </nav>
+            <Box position={'fixed'} right={{base: '10px', md: '20px'}} bottom={{base: '10px', md: '20px'}} onClick={goTop} cursor={'pointer'} zIndex={10}>
+                <CircularProgress value={scrollProgress} color={variables['primary']} thickness={'12px'} size={'60px'}
+                className={`${styles.goUp} ${scrollProgress > 1 ? styles.show : ''}`} borderRadius={'50%'}>
+                    <CircularProgressLabel bg={variables.secondary} zIndex={'-1'} w={'80%'} borderRadius={'50%'} _hover={{bg: variables.dark}}>
+                        <Box fontSize={'30px'} paddingTop={'6px'} color={'white'}>
+                            <Icon as={TiArrowUpThick}/>
+                        </Box>
+                    </CircularProgressLabel>
+                </CircularProgress>
+            </Box>
+        </>
+
     )
 }
 

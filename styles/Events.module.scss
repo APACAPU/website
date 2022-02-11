@@ -5,7 +5,19 @@
     @include section;
     &:first-of-type {
       padding-top: 1.5rem;
-      background-color: rgba(226, 239, 255, 0.2);
+      background-color: #93bcf880;
+    }
+    &.events {
+      .eventCol {
+        background-color: $light;
+        padding: 20px;
+        border-radius: 8px;
+        img {
+          border-radius: 8px;
+          box-shadow: gray 0 2px 4px 2px;
+          margin-bottom: 15px
+        }
+      }
     }
   }
 }
