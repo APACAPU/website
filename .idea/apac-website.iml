@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="personal-blog" />
+    <orderEntry type="module" module-name="apac-mailer" />
   </component>
 </module>

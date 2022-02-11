@@ -29,8 +29,14 @@ export default function RegisterDialog(props) {
     const [message, setMessage] = useState("");
     const [state, setState] = useState(false);
 
+
     function onSubmit(values) {
-        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/register", values)
+        console.log(values);
+        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/register", values, {
+            headers: {
+                'Content-Type': 'text/plain',
+            }
+        })
             .then((response) => {
                 if (response.status == 201) {
                     setMessage("Registered successfully! Please wait while we process your request, and we will " +

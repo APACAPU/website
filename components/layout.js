@@ -1,34 +1,35 @@
 import Navbar from './navbar'
 import Footer from "./Footer";
-import {useEffect, useState} from "react";
-import styles from './styles/layout.module.scss';
+import {AnimatePresence, motion, usePresence} from 'framer-motion';
+import {useRouter} from "next/router";
 
 export default function Layout({ children }) {
-    const [pageChanging, setPageChanging] = useState(false);
-    const [displayChildren, setDisplayChildren] = useState(children);
+    const router = useRouter();
 
-    useEffect(() => {
-        if (children !== displayChildren) setPageChanging(true);
-    }, [children, setDisplayChildren, displayChildren]);
+    const scrollTop = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
 
     return (
         <>
             <Navbar />
-            <div className={`${styles.wrapper} ${pageChanging ? styles.changing : ''}`}
-                 onTransitionEnd={() => {
-                     if (pageChanging) {
-                         setDisplayChildren(children);
-                         document.body.scrollTop = 0; // For Safari
-                         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-                         setTimeout(() => {
-                             setPageChanging(false);
-                         }, 50);
-
-                     }
-                 }}>
-                <main>{displayChildren}</main>
-                <Footer/>
-            </div>
+            <AnimatePresence onExitComplete={scrollTop}>
+                <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" exit="pageExit" variants={{
+                    pageInitial: {
+                        opacity: 0,
+                    },
+                    pageAnimate: {
+                        opacity: 1,
+                    },
+                    pageExit: {
+                        opacity: 0,
+                    }
+                }}>
+                    <main>{children}</main>
+                    <Footer/>
+                </motion.div>
+            </AnimatePresence>
         </>
     )
 }
