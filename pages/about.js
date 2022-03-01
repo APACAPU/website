@@ -19,6 +19,7 @@ import committees from "/data/Committees";
 import {BsArrowRight} from "react-icons/bs";
 import ProfileDialog from "../components/ProfileDialog";
 import {useState} from "react";
+import testimonials from "/data/expresident";
 
 export default function About() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -100,7 +101,7 @@ export default function About() {
                     <Flex flexWrap={'wrap'} justify={'center'} className={styles['card-wrapper']}>
                         {committees.map(person => {
                             return (
-                                <Flex flexDirection={'column'} mb={{base: '50px', md: 0}}
+                                <Flex flexDirection={'column'} mb={{base: '50px', md: '30px'}}
                                       className={styles.cards} key={person.name} onClick={
                                         () => {
                                             setCommittee(person);
@@ -126,6 +127,28 @@ export default function About() {
                     </Flex>
                 </section>
             </div>
+            <section id={styles['section5']}>
+                <Heading as={'h2'}>Ex-Presidents&apos; Testimonials</Heading>
+                <Flex flexWrap={'wrap'} justify={'center'} className={styles['card-wrapper']}>
+                    {testimonials.map((testimonial, idx) => {
+                        return (
+                            <Flex key={idx} className={styles.card} flexDirection={'column'}>
+                                <Text>
+                                    {testimonial.text}
+                                </Text>
+                                <Spacer/>
+                                <Flex flexDirection={'row'} mt={'14px'}>
+                                    <Image src={testimonial.pic} flexBasis={'33%'} flexGrow={0} alt={testimonial.name} w={'45%'} rounded={'50%'}/>
+                                    <Flex w={'55%'} pl={'8px'} flexDirection={'column'} justify={'center'}>
+                                        <Text fontWeight={'bold'}>{testimonial.name}</Text>
+                                        <Text color={'gray.600'} fontSize={'0.8rem'}>{testimonial.date}</Text>
+                                    </Flex>
+                                </Flex>
+                            </Flex>
+                            )
+                    })}
+                </Flex>
+            </section>
             <ProfileDialog isOpen={isOpen} onClose={onClose} name={selectedCommittee.name}/>
         </div>
     )

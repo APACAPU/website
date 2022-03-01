@@ -1,10 +1,25 @@
 import Head from "next/head";
 import styles from "../styles/Events.module.scss";
-import {Box, Button, Divider, Flex, Grid, Heading, Icon, Image, Link, Text} from "@chakra-ui/react";
+import {Box, Button, Divider, Flex, Grid, Heading, Icon, Image, Link, Spacer, Text} from "@chakra-ui/react";
 import events from "../data/Events";
 import {ImCalendar} from "react-icons/im";
 
+const ViewMoreBtn = (props) =>{
+    if (props.link == null) {
+        return null;
+    }
+    return (
+        <Box textAlign={'center'} mt={'2rem'}>
+            <Link href={props.link} target={'_blank'}>
+                <Button colorScheme={'accent'} _focus={{shadow: '0 0 2px 3px darkorange'}}>Learn More</Button>
+            </Link>
+        </Box>
+    )
+}
+
 export default function Events() {
+    let years = Object.keys(events);
+    years.sort((a, b) => b - a);
     return (
         <>
             <Head>
@@ -27,7 +42,7 @@ export default function Events() {
                 </section>
                 <section className={styles.events}>
                     {
-                        Object.keys(events).map((year, idx) => {
+                        years.map((year, idx) => {
                             return (
                                 <Box key={idx} py={"1rem"}>
                                     <Heading as={'h2'} textAlign={'center'} fontSize={'4rem'} mb={'1rem'}>{year}</Heading>
@@ -35,19 +50,16 @@ export default function Events() {
                                         {
                                             events[year].map((event, idx) => {
                                                 return (
-                                                    <Box key={idx} className={styles.eventCol}>
+                                                    <Flex key={idx} className={styles.eventCol} flexDirection={'column'}>
                                                         <Image src={event.img} fallbackSrc={event.lazy} alt={event.name} w={'100%'}/>
-                                                        <Box>
+                                                        <Flex flexGrow={'1'} flexDirection={'column'}>
                                                             <Flex align={'center'} color={'gray.600'} fontSize={'0.8rem'}><Icon as={ImCalendar} mr={'5px'}/>{event.date}</Flex>
                                                             <Heading as={'h4'} fontSize={'1.4rem'} mt={'10px'}>{event.name}</Heading>
                                                             <Text mt={'8px'}>{event.description}</Text>
-                                                            <Box textAlign={'center'} mt={'1rem'}>
-                                                                <Link href={event.link} target={'_blank'}>
-                                                                    <Button colorScheme={'accent'} _focus={{shadow: '0 0 2px 3px darkorange'}}>Learn More</Button>
-                                                                </Link>
-                                                            </Box>
-                                                        </Box>
-                                                    </Box>
+                                                            <Spacer/>
+                                                            <ViewMoreBtn link={event.link}/>
+                                                        </Flex>
+                                                    </Flex>
                                                     )
                                             })
                                         }

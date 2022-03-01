@@ -1,8 +1,6 @@
 import {
     Box,
     Button,
-    CircularProgress,
-    CircularProgressLabel,
     Divider,
     Flex, Icon,
     Image,
@@ -17,6 +15,7 @@ import {useRouter} from "next/router";
 import variables from '../styles/variables.module.scss';
 import RegisterDialog from "./RegisterDialog";
 import {TiArrowUpThick} from "react-icons/ti";
+import event from "../data/ActiveEvent";
 
 const DesktopNav = props => {
     return (
@@ -28,7 +27,7 @@ const DesktopNav = props => {
                         <Image src={"/logo.png"} height={'50px'} alt={'APAC Icon'}/>
                     </a>
                 </Link>
-                {links.map(link => <Link href={link.href} key={link.href} scroll={false}>
+                {links.map(link => link.name == "" ? "" : <Link href={link.href} key={link.href} scroll={false}>
                     <a className={`${styles['navbar-link']} ${props.router.pathname == link.href ? styles.active : ""}`}>
                         <NiceLink>{link.name}</NiceLink>
                     </a>
@@ -42,6 +41,9 @@ const DesktopNav = props => {
 
 const MobileNav = props => {
     const [open, setOpen] = useState(false);
+    useEffect(() => {
+       props.setDrowDown(open)
+    }, [open]);
     return (
         <Box w={'100%'} bg={'white'} h={open ? '100%' : '80px'} pos={'fixed'} display={{ base: 'block', lg: 'none' }}
              className={`${styles.navbar} ${props.offset > 10 ? styles.shadow : ''}`}>
@@ -55,7 +57,7 @@ const MobileNav = props => {
                 </Box>
             </Flex>
             <Box className={`${styles.dropdown} ${open ? styles.opening : ''}`} flexDirection={'column'} alignItems={'center'}>
-                {links.map(link =>  {return (
+                {links.map(link =>  {return link.name == "" ? "" : (
                     <Flex key={link.href} justify={'center'} alignItems={"center"} flexDirection={'column'}>
                         <div className={styles['navbar-link-wrapper']}>
                             <Link href={link.href} key={link.href} scroll={false}>
@@ -74,6 +76,7 @@ const MobileNav = props => {
 
 export default function Navbar() {
     const [offset, setOffset] = useState(0);
+    const [dropDown, setDropDown] = useState(false);
     const {isOpen, onOpen, onClose} = useDisclosure();
 
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -102,18 +105,19 @@ export default function Navbar() {
         <>
             <nav>
                 <DesktopNav router={router} offset={offset} openRegister={onOpen}/>
-                <MobileNav router={router} offset={offset} openRegister={onOpen}/>
+                <MobileNav router={router} offset={offset} openRegister={onOpen} setDrowDown={setDropDown}/>
                 <RegisterDialog onOpen={onOpen} onClose={onClose} isOpen={isOpen}/>
+                <Box h={'2px'} w={`${scrollProgress}%`} bg={variables.primary}
+                     top={'78px'} position={'fixed'} transition={'width 100ms linear'}
+                     zIndex={11} display={`${dropDown ? 'none' : 'block'}`}/>
             </nav>
-            <Box position={'fixed'} right={{base: '10px', md: '20px'}} bottom={{base: '10px', md: '20px'}} onClick={goTop} cursor={'pointer'} zIndex={10}>
-                <CircularProgress value={scrollProgress} color={variables['primary']} thickness={'12px'} size={'60px'}
-                className={`${styles.goUp} ${scrollProgress > 1 ? styles.show : ''}`} borderRadius={'50%'}>
-                    <CircularProgressLabel bg={variables.secondary} zIndex={'-1'} w={'80%'} borderRadius={'50%'} _hover={{bg: variables.dark}}>
-                        <Box fontSize={'30px'} paddingTop={'6px'} color={'white'}>
-                            <Icon as={TiArrowUpThick}/>
-                        </Box>
-                    </CircularProgressLabel>
-                </CircularProgress>
+            <Box position={'fixed'} right={{base: '10px', md: '20px'}} bottom={{base: '10px', md: '20px'}} zIndex={9}>
+                <Flex fontSize={'24px'} color={'white'} className={`${styles.goUp} ${scrollProgress > 1 ? styles.show : ''}`}
+                     bg={variables.secondary} zIndex={'-1'} borderRadius={'50%'} _hover={{bg: variables.dark}}
+                    w={'40px'} h={'40px'} justify={'center'} align={'center'}
+                      onClick={goTop} cursor={'pointer'}>
+                    <Icon as={TiArrowUpThick}/>
+                </Flex>
             </Box>
         </>
 
@@ -123,6 +127,7 @@ export default function Navbar() {
 const links = [
     {name: "Home", href: "/"},
     {name: "Events", href: "/events"},
+    {name: event.active ? event.name : "", href: "/event"},
     {name: "About", href: "/about"},
     {name: "Contact Us", href: "/contact"},
 ]

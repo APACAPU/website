@@ -2,6 +2,7 @@ import Navbar from './navbar'
 import Footer from "./Footer";
 import {AnimatePresence, motion, usePresence} from 'framer-motion';
 import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
 
 export default function Layout({ children }) {
     const router = useRouter();
@@ -9,6 +10,19 @@ export default function Layout({ children }) {
     const scrollTop = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    // A dirty quickfix for this issue:
+    // https://github.com/framer/motion/issues/578
+
+    const [isLoaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setLoaded(true);
+    }, []);
+
+    if (!isLoaded) {
+        return <></>;
     }
 
     return (

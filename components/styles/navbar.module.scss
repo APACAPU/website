@@ -18,6 +18,9 @@
     }
     span {
       color: $secondary;
+      text-align: center;
+      display: inline-block;
+      padding: 0 10px;
       &:hover {
         color: $primary;
       }
@@ -114,7 +117,7 @@
 }
 
 .goUp {
-  transition: transform 300ms ease-in;
+  transition: transform 300ms ease-in, background-color 150ms linear;
   transform: translateY(80px);
   &.show {
     transform: translateY(0);

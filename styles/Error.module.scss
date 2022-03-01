@@ -1,0 +1,9 @@
+@import './variables.module.scss';
+
+.wrapper {
+  section {
+    @include section;
+    text-align: center;
+    padding-top: 20px;
+  }
+}

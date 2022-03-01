@@ -1,0 +1,63 @@
+@import '/styles/variables.module.scss';
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  aspect-ratio: 0.8;
+  max-height: 500px;
+  max-width: 400px;
+  position: relative;
+  .imgWrapper {
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      transition: all 0.2s ease-out;
+      opacity: 0;
+      background: linear-gradient(to bottom, transparent 0%, black 100%);
+    }
+    .img {
+      aspect-ratio: 0.8;
+      max-height: 500px;
+    }
+    .lazyWrapper {
+      width: 100%;
+      height: 100%;
+      .lazyImg {
+        width: 100%;
+        aspect-ratio: 0.8;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &:hover {
+    .imgWrapper {
+      &::before {
+        opacity: 1;
+      }
+    }
+    .postCaption {
+      opacity: 1;
+    }
+  }
+  .postCaption {
+    padding: 20px;
+    left: 20px;
+    right: 20px;
+    opacity: 0;
+    bottom: 0;
+  }
+}
+
+.swiperBtn {
+  border-radius: 50% !important;
+  font-size: 2rem !important;
+  align-items: center;
+  justify-content: center;
+}

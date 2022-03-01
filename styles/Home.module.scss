@@ -35,18 +35,14 @@
   @include section;
   position: relative;
 }
-#section2 {
+#section2, #section3, #section4 {
   @include section;
   .section-content {
     font-size: 1.825rem;
   }
 }
-#section3 {
-
-}
 #section1::after {
   background-color: $light;
-  opacity: 0.4;
   height: 100%;
   content: '';
   position: absolute;
@@ -60,7 +56,7 @@
   .section-title {
     margin-left: -0.5rem;
   }
-  #section2 {
+  #section2, #section3, #section4 {
     .section-content {
       font-size: 1.4rem;
     }

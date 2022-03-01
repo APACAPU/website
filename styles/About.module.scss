@@ -95,12 +95,11 @@
         flex-grow: 0;
         margin-right: 30px;
         margin-bottom: 30px;
-        transition: box-shadow 200ms ease-in;
+        transition: box-shadow 200ms linear;
         cursor: pointer;
         &:hover{
           box-shadow: 0 0 8px 1px $primary;
           .image {
-            border-radius: 0;
             box-shadow: 0 0 4px 0 $accent;
           }
           .arrow {
@@ -128,6 +127,42 @@
         }
         h3 {
           margin-top: 10px;
+        }
+      }
+    }
+  }
+  #section5 {
+    background-color: $light;
+    h2 {
+      margin-bottom: 3rem;
+      text-align: center;
+      font-size: 3.5rem;
+    }
+    .card-wrapper {
+      .card {
+        background-color: #EDF5FF;
+        padding: 30px 20px 30px;
+        width: 100%;
+        border-radius: 8px;
+        flex-basis: 260px;
+        flex-grow: 0;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        box-shadow: 0 3px 5px 1px gray;
+
+        img {
+          box-shadow: 0 0 2px 0 gray;
+        }
+
+        &::before {
+          content: '“';
+          font-family: "Times New Roman", sans-serif;
+          position: absolute;
+          left: 0;
+          top: -20px;
+          color: $secondary;
+          font-size: 60px;
         }
       }
     }
