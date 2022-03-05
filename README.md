@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# APAC Website
 
-## Getting Started
+The data will be stored in the folder "data", so you can just edit the contents in the folder.
 
-First, run the development server:
+* lazy key is for preloading the images before the big image.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**Don't change the key names**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Adding Old Events
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To add old events, head to Events.js in data folder, if it is in a new year, just add the year from the top,
+and fill in the information according to the keys. (just copy one of the events and add it in).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Changing Active Event
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Edit the file "ActiveEvent.js":
 
-## Learn More
+If there isn't any active event, just change the active to false and vice versa.
 
-To learn more about Next.js, take a look at the following resources:
+The colors of the page can be changed easily in the color section of ActiveEvent
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can add multiple items to posts, all will be displayed out. The template of
+writing an active event can be referred to the comments in ActiveEvent.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Committee Members
 
-## Deploy on Vercel
+Edit the file Committees.js:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+So far only linkedin, facebook, instagram, website and github social media websites but
+not necessary to fill them all.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+seq is for sequencing, e.g., president seq 1, vice-president seq 2... but
+for normal committees can take same seq, it'll be sorted based on department,
+then followed by name, so can take same sequence.
+
+The other 2 are self-explanatory.
+
+## Setting Pictures
+
+To set picture, login to APAC's imgur account, upload the picture there.
+
+![Image](https://i.imgur.com/sVVIW94.png)
+
+1. Select **small thumnails** at bottom right (size panel), click copy **Direct Link**. This will usually be used for lazy.
+2. Select **large thumnails** at bottom right (size panel), click copy **Direct Link**. This will usually be used for image.
