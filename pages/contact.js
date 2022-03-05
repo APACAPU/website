@@ -21,12 +21,13 @@ export default function Contact() {
     const {
         handleSubmit,
         register,
-        formState: { errors, isSubmitting },
+        formState: { errors },
         reset
         // eslint-disable-next-line react-hooks/rules-of-hooks
     } = useForm();
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+    const [isSubmitting, setSubmitting] = useState(false);
     const [message, setMessage] = useState("");
     const [state, setState] = useState(false);
 
@@ -40,8 +41,10 @@ export default function Contact() {
     }
 
     function onSubmit(values) {
+        setSubmitting(true);
         axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/message", values)
             .then((response) => {
+                setSubmitting(false);
                 if (response.status == 201) {
                     setMessage("We have received you message! Please give us some time to process the message before" +
                         " we get back to you.");
@@ -52,6 +55,7 @@ export default function Contact() {
                     throw "Something went wrong!";
                 }
             }).catch((e) => {
+            setSubmitting(false);
             setMessage("Something went wrong, please try again shortly!");
             setState(false);
             onOpen();

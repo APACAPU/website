@@ -21,23 +21,21 @@ export default function RegisterDialog(props) {
     const {
         handleSubmit,
         register,
-        formState: { errors, isSubmitting },
+        formState: { errors },
         reset
     } = useForm();
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+    const [isSubmitting, setSubmitting] = useState(false);
     const [message, setMessage] = useState("");
     const [state, setState] = useState(false);
 
 
     function onSubmit(values) {
-        console.log(values);
-        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/register", values, {
-            headers: {
-                'Content-Type': 'text/plain',
-            }
-        })
+        setSubmitting(true);
+        axios.post("https://AsiaPacificAnalyticsClub.pythonanywhere.com/register", values)
             .then((response) => {
+                setSubmitting(false);
                 if (response.status == 201) {
                     setMessage("Registered successfully! Please wait while we process your request, and we will " +
                         "send an email to notify you shortly.");
@@ -48,6 +46,7 @@ export default function RegisterDialog(props) {
                     throw "Something went wrong!";
                 }
             }).catch((e) => {
+            setSubmitting(false);
             setMessage("Something went wrong, please try again shortly!");
             setState(false);
             onOpen();
