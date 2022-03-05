@@ -41,15 +41,15 @@ function LinkIcon({children}) {
 const socials = [
     {
         icon: <FaFacebookF/>,
-        href: "https://facebook.com"
+        href: "https://www.facebook.com/asiapacificanalyticsclub"
     },
     {
         icon: <RiInstagramFill/>,
-        href: "https://instagram.com"
+        href: "https://www.instagram.com/apu.apac/"
     },
     {
         icon: <AiFillLinkedin/>,
-        href: "https://linkedin.com"
+        href: "https://www.linkedin.com/company/asia-pacific-analytics-club"
     },
     {
         icon: <MdEmail/>,

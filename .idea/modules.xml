@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../temp/apac-mailer/.idea/apac-mailer.iml" filepath="$PROJECT_DIR$/../../temp/apac-mailer/.idea/apac-mailer.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/apac-website.iml" filepath="$PROJECT_DIR$/.idea/apac-website.iml" />
       <module fileurl="file://$PROJECT_DIR$/../personal-blog/.idea/personal-blog.iml" filepath="$PROJECT_DIR$/../personal-blog/.idea/personal-blog.iml" />
     </modules>
