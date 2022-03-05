@@ -5,6 +5,7 @@ const committees = [
         img: 'https://i.imgur.com/UIvGRKml.jpg',
         lazy: 'https://i.imgur.com/UIvGRKml.jpg',
         email: "test.com",
+        seq: 1
     },
     {
         name: 'Loe Hui Ying',
@@ -25,7 +26,8 @@ const committees = [
         position: "Vice President 2",
         img: 'https://i.imgur.com/UIvGRKml.jpg',
         lazy: 'https://i.imgur.com/UIvGRKml.jpg',
-        email: "test.com"
+        email: "test.com",
+        seq: 3
     }
 ];
 

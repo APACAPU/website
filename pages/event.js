@@ -45,7 +45,7 @@ export default function Event() {
                     <Text mt={'2rem'} mb={'1.5rem'} fontSize={{md: '1.5rem', base: '1.2rem'}} color={'gray.600'} textAlign={'center'}>
                         {event.shortDescription}
                     </Text>
-                    <Link href={'https://i.imgur.com/2kQPiy5l.jpg?1'} target={"_blank"}>
+                    <Link href={event.registrationLink} target={"_blank"}>
                         <Box textAlign={'center'} mb={'2rem'}>
                             <Button colorScheme={'primary'}>Register Now</Button>
                         </Box>

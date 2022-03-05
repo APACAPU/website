@@ -105,7 +105,9 @@ export default function About() {
                 <section id={styles['section4']}>
                     <Heading as={'h2'}>Our Team</Heading>
                     <Flex flexWrap={'wrap'} justify={'center'} className={styles['card-wrapper']}>
-                        {committees.map(person => {
+                        {committees.sort((a, b) => {
+                            return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
+                        }).map(person => {
                             return (
                                 <Flex flexDirection={'column'} mb={{base: '50px', md: '30px'}}
                                       className={styles.cards} key={person.name} onClick={
