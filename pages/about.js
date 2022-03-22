@@ -161,7 +161,13 @@ export default function About() {
                     })}
                 </Flex>
             </section>
-            <iframe src="https://discord.com/widget?id=862713178717814815&theme=dark" width="350" height="500"/>
+            <iframe 
+            src="https://discord.com/widget?id=862713178717814815&theme=dark" 
+            width="350" 
+            height="500" 
+            allowtransparency="true" 
+            frameBorder="0" 
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"/>
             <ProfileDialog isOpen={isOpen} onClose={onClose} name={selectedCommittee.name}/>
         </div>
     )
