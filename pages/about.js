@@ -21,6 +21,10 @@ import ProfileDialog from "../components/ProfileDialog";
 import {useState} from "react";
 import testimonials from "/data/expresident";
 
+committees.sort((a, b) => {
+    return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
+});
+
 export default function About() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [selectedCommittee, setCommittee] = useState(committees[0]);
@@ -105,33 +109,33 @@ export default function About() {
                 <section id={styles['section4']}>
                     <Heading as={'h2'}>Our Team</Heading>
                     <Flex flexWrap={'wrap'} justify={'center'} className={styles['card-wrapper']}>
-                        {committees.sort((a, b) => {
-                            return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
-                        }).map(person => {
-                            return (
-                                <Flex flexDirection={'column'} mb={{base: '50px', md: '30px'}}
-                                      className={styles.cards} key={person.name} onClick={
+                        {
+                            committees.map(person => {
+                                return (
+                                    <Flex flexDirection={'column'} mb={{base: '50px', md: '30px'}}
+                                          className={styles.cards} key={person.name} onClick={
                                         () => {
                                             setCommittee(person);
                                             onOpen();
                                         }
-                                      }>
-                                    <Box position={'relative'}>
-                                        <Image fallbackSrc={person.lazy}
-                                               src={person.img} alt={person.name} height={'220px'}
-                                               width={'220px'} className={styles.image}/>
-                                        <div className={styles.arrow}><BsArrowRight/></div>
-                                    </Box>
-                                    <Heading as={'h3'} fontSize={'1.5rem'} w={'100%'}>
-                                        {person.name}
-                                    </Heading>
-                                    <Spacer/>
-                                    <Flex alignItems={'center'} mt={'5px'}>
-                                        <Text color={'gray.500'}>{person.position}</Text>
+                                    }>
+                                        <Box position={'relative'}>
+                                            <Image fallbackSrc={person.lazy}
+                                                   src={person.img} alt={person.name} height={'220px'}
+                                                   width={'220px'} className={styles.image} objectFit={"cover"}/>
+                                            <div className={styles.arrow}><BsArrowRight/></div>
+                                        </Box>
+                                        <Heading as={'h3'} fontSize={'1.5rem'} w={'100%'}>
+                                            {person.name}
+                                        </Heading>
+                                        <Spacer/>
+                                        <Flex alignItems={'center'} mt={'5px'}>
+                                            <Text color={'gray.500'}>{person.position}</Text>
+                                        </Flex>
                                     </Flex>
-                                </Flex>
-                            )
-                        })}
+                                )
+                            })
+                        }
                     </Flex>
                 </section>
             </div>
@@ -157,6 +161,7 @@ export default function About() {
                     })}
                 </Flex>
             </section>
+            <iframe src="https://discord.com/widget?id=862713178717814815&theme=dark" width="350" height="500"/>
             <ProfileDialog isOpen={isOpen} onClose={onClose} name={selectedCommittee.name}/>
         </div>
     )

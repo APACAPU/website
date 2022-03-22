@@ -39,7 +39,7 @@ export default function ProfileDialog(props) {
                             <Flex flexBasis={{md: '50%', base: '100%'}} pl={{md: '40px', base: "0"}} flexDirection={'column'} pr={{md: '30px', base: "0"}}>
                                 <Heading as={'h2'} mt={{md: '0', base: '5px'}}>{committee.fullname ?? committee.name}</Heading>
                                 <Text fontSize={'1.4rem'} color={'gray.600'}>{committee.position}</Text>
-                                <Text mt={'30px'} fontSize={'1.1rem'}>{committee.description ?? ''}</Text>
+                                <Box mt={'30px'} fontSize={'1.1rem'} dangerouslySetInnerHTML={{__html: committee.description ?? ''}}/>
                                 <Spacer/>
                                 <Flex direction={'column'} mt={'30px'}>
                                     <Flex align={'center'}>
