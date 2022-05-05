@@ -1,5 +1,5 @@
 const event = {
-    active: true,
+    active: false,
     name: "Breaking into the Data Industry", // preferable shorter so that can fit into navbar
     fullName: "Breaking into the Data Industry | Panel Discussion",
     shortDescription: "A discussion between 5 data professionals regarding the data trend in the industry",

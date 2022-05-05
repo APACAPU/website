@@ -21,9 +21,9 @@ import ProfileDialog from "../components/ProfileDialog";
 import {useState} from "react";
 import testimonials from "/data/expresident";
 
-committees.sort((a, b) => {
-    return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
-});
+// committees.sort((a, b) => {
+//     return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
+// });
 
 export default function About() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -161,7 +161,6 @@ export default function About() {
                     })}
                 </Flex>
             </section>
-            <iframe src="https://discord.com/widget?id=862713178717814815&theme=dark" width="350" height="500"/>
             <ProfileDialog isOpen={isOpen} onClose={onClose} name={selectedCommittee.name}/>
         </div>
     )
