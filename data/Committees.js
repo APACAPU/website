@@ -180,14 +180,14 @@ const committees = [
     {
         name: 'Khor Zhen Win',
         position: 'Public Relations Committee',
-        img: 'https://i.imgur.com/U4ENfBFl.jpg',
-        lazy: 'https://i.imgur.com/U4ENfBFt.jpg',
+        img: 'https://i.imgur.com/n1H5luJ.jpg',
+        lazy: 'https://i.imgur.com/n1H5luJ.jpg',
         email: 'khorzhenwin@gmail.com',
-        description: 'Passion is a state of mind.',
+        description: 'See mood.',
         facebook: {href: 'https://www.facebook.com/khor.zhenwin.3/', name:'Khor Zhen Win'},
         linkedin: {href: 'https://www.linkedin.com/in/khorzhenwin', name: 'Khor Zhen Win'},
-        instagram: {href: 'https://www.instagram.com/khorzhenwin/', name: 'Khor Zhen Win'},
-        github: {href: 'https://github.com/khorzhenwin', name: 'Khor Zhen Win'},
+        instagram: {href: 'https://www.instagram.com/khorzhenwin/', name: 'khorzhenwin'},
+        github: {href: 'https://github.com/khorzhenwin', name: 'khorzhenwin'},
         seq: 5
     },
     {
