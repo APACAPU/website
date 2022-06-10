@@ -36,7 +36,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
       <>
           <Head>
-              <title>Home Page | APAC</title>
+              <title>APAC</title>
               <meta name="description" content="APAC - We are an analytics club aiming to bring more exposure to APU students about Data Science."/>
               <link rel="icon" href="/favicon.ico"/>
               <meta property="og:title" content="Home Page | APAC" />
