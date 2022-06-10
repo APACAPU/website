@@ -56,8 +56,8 @@ export default function Events() {
                                         {
                                             events[year].map((event, idx) => {
                                                 return (
-                                                    <div data-aos={'fade-up'}>
-                                                        <Flex key={idx} className={styles.eventCol} flexDirection={'column'}>
+                                                    <div data-aos={'fade-up'} key={idx}>
+                                                        <Flex className={styles.eventCol} flexDirection={'column'}>
                                                             <Image src={event.img} fallbackSrc={event.lazy} alt={event.name} w={'100%'}/>
                                                             <Flex flexGrow={'1'} flexDirection={'column'}>
                                                                 <Flex align={'center'} color={'gray.600'} fontSize={'0.8rem'}><Icon as={ImCalendar} mr={'5px'}/>{event.date}</Flex>
