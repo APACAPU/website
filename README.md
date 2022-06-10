@@ -43,3 +43,10 @@ To set picture, login to APAC's imgur account, upload the picture there.
 
 1. Select **small thumnails** at bottom right (size panel), click copy **Direct Link**. This will usually be used for lazy.
 2. Select **large thumnails** at bottom right (size panel), click copy **Direct Link**. This will usually be used for image.
+
+## TODO
+
+1. No dynamic page meta yet, dynamic meta is added on client side, so crawlers cannot detect the meta tags. Here is a way to resolve the issue, anyone feel free to try out this fella is a bit lazy plus he doesn't feel like doing it for now :) -> https://github.com/vercel/next.js/issues/35172
+2. Adding insta post scrollers like https://www.pixlee.com/social-feed into the home page.
+3. Event.js is still not super nice, can try to make it nicer.
+4. Adding some animation to make it look cooler? (e.g., AOS -> but a bit laggy)
