@@ -43,7 +43,7 @@ const MobileNav = props => {
     const [open, setOpen] = useState(false);
     useEffect(() => {
        props.setDrowDown(open)
-    }, [open, props]);
+    }, [open]);
     return (
         <Box w={'100%'} bg={'white'} h={open ? '100%' : '80px'} pos={'fixed'} display={{ base: 'block', lg: 'none' }}
              className={`${styles.navbar} ${props.offset > 10 ? styles.shadow : ''}`}>
@@ -98,7 +98,7 @@ export default function Navbar() {
     }, []);
 
     const goTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'})
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     return (

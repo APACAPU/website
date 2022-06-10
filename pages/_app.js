@@ -30,7 +30,7 @@ export default function MyApp({ Component, pageProps }) {
     useEffect(() => {
         router.push(router.pathname);
         document.body.style.setProperty("margin", '0', 'important');
-    }, [router]);
+    }, []);
     
   return (
       <ChakraProvider theme={theme}>
