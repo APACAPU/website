@@ -1,4 +1,22 @@
 const events = {
+    2022: [
+        {
+            name: "APAC Stakeholders Meeting",
+            date: "30 April 2022",
+            description: "An internal event where APAC members get to play games together and give feedbacks to the club.",
+            lazy: "https://i.imgur.com/MVIqwuJt.png",
+            img: "https://i.imgur.com/MVIqwuJl.png",
+            link: "https://www.instagram.com/p/CchSVacp5Bo/"
+        },
+        {
+            name: "Shopee X APAC Analytics Career Talk",
+            date: "10 March 2021",
+            description: "A collaboration between Shopee and APAC where data analysts from Shopee shared their day-to-day lives and various career opportunities in Shopee.",
+            lazy: "https://i.imgur.com/tcrEuqVt.png",
+            img: "https://i.imgur.com/tcrEuqVl.png",
+            link: "https://www.instagram.com/p/CafCDdLJSwj/"
+        },
+    ],
     2021: [
         {
             name: "Breaking into the Data Industry | Panel Discussion",

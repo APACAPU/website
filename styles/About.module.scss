@@ -12,6 +12,7 @@
     background-color: rgba(226, 239, 255, 0.2);
     .quote-wrapper {
       .blockquote {
+        box-shadow: gray 1px 1px 3px 0;
         display: inline-block;
         margin-left: auto;
         text-align: left;
@@ -97,6 +98,7 @@
         margin-bottom: 30px;
         transition: box-shadow 200ms linear;
         cursor: pointer;
+        box-shadow: lightgray 1px 1px 5px 0;
         &:hover{
           box-shadow: 0 0 8px 1px $primary;
           .image {

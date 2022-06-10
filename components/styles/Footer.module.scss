@@ -1,5 +1,9 @@
 @import '/styles/variables.module.scss';
 
+.footer {
+  box-shadow: lightgray 0 -1px 5px 1px;
+}
+
 .social-icon {
   border: 2px solid $secondary;
   display: inline-flex;

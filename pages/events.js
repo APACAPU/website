@@ -56,16 +56,18 @@ export default function Events() {
                                         {
                                             events[year].map((event, idx) => {
                                                 return (
-                                                    <Flex key={idx} className={styles.eventCol} flexDirection={'column'}>
-                                                        <Image src={event.img} fallbackSrc={event.lazy} alt={event.name} w={'100%'}/>
-                                                        <Flex flexGrow={'1'} flexDirection={'column'}>
-                                                            <Flex align={'center'} color={'gray.600'} fontSize={'0.8rem'}><Icon as={ImCalendar} mr={'5px'}/>{event.date}</Flex>
-                                                            <Heading as={'h4'} fontSize={'1.4rem'} mt={'10px'}>{event.name}</Heading>
-                                                            <Text mt={'8px'}>{event.description}</Text>
-                                                            <Spacer/>
-                                                            <ViewMoreBtn link={event.link}/>
+                                                    <div data-aos={'fade-up'}>
+                                                        <Flex key={idx} className={styles.eventCol} flexDirection={'column'}>
+                                                            <Image src={event.img} fallbackSrc={event.lazy} alt={event.name} w={'100%'}/>
+                                                            <Flex flexGrow={'1'} flexDirection={'column'}>
+                                                                <Flex align={'center'} color={'gray.600'} fontSize={'0.8rem'}><Icon as={ImCalendar} mr={'5px'}/>{event.date}</Flex>
+                                                                <Heading as={'h4'} fontSize={'1.4rem'} mt={'10px'}>{event.name}</Heading>
+                                                                <Text mt={'8px'}>{event.description}</Text>
+                                                                <Spacer/>
+                                                                <ViewMoreBtn link={event.link}/>
+                                                            </Flex>
                                                         </Flex>
-                                                    </Flex>
+                                                    </div>
                                                     )
                                             })
                                         }
@@ -79,4 +81,10 @@ export default function Events() {
             </div>
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    }
 }

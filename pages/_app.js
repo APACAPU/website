@@ -5,6 +5,8 @@ import Layout from "../components/layout";
 import theme from "../styles/CustomColor";
 import {useEffect} from "react";
 import Router, {useRouter} from "next/router";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const routeChange = () => {
     // Temporary fix to avoid flash of unstyled content
@@ -30,6 +32,7 @@ export default function MyApp({ Component, pageProps }) {
     useEffect(() => {
         router.push(router.pathname);
         document.body.style.setProperty("margin", '0', 'important');
+        AOS.init();
     }, []);
     
   return (

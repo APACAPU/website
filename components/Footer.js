@@ -8,7 +8,7 @@ import styles from './styles/Footer.module.scss';
 
 export default function Footer() {
     return (
-        <Box bg={variables.smoke} px={{md: '8rem', base: '1rem'}} py={'1.5rem'}>
+        <Box bg={variables.smoke} px={{md: '8rem', base: '1rem'}} py={'1.5rem'} className={styles.footer}>
             <Flex alignItems={'center'} flexDirection={{base: 'column', md: 'row'}}>
                 <Img src={'/logo.png'} h={'60px'} mb={{base:'20px', md: '0'}}/>
                 <Box ml={{base: 0, md: '20px'}} mb={{base:'20px', md: '0'}}>© APAC 2022. All rights reserved.</Box>

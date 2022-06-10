@@ -46,7 +46,7 @@ export default function Contact() {
             .then((response) => {
                 setSubmitting(false);
                 if (response.status == 201) {
-                    setMessage("We have received you message! Please give us some time to process the message before" +
+                    setMessage("We have received your message! Please give us some time to process the message before" +
                         " we get back to you.");
                     setState(true);
                     onOpen();
@@ -149,4 +149,10 @@ export default function Contact() {
             </div>
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    }
 }

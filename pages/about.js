@@ -21,10 +21,6 @@ import ProfileDialog from "../components/ProfileDialog";
 import {useState} from "react";
 import testimonials from "/data/expresident";
 
-// committees.sort((a, b) => {
-//     return a.seq - b.seq | a.position.localeCompare(b.position) | a.name.localeCompare(b.name);
-// });
-
 export default function About() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [selectedCommittee, setCommittee] = useState(committees[0]);
@@ -52,21 +48,15 @@ export default function About() {
                         <Flex flexWrap={'wrap'}>
                             <Box className={styles.half}>
                                 <Heading as={'h2'}>Mission</Heading>
-                                <Text className={styles.text}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus architecto at consectetur doloribus eveniet, excepturi iure
-                                    necessitatibus, perferendis, perspiciatis porro sed ullam vero. A odio perspiciatis
-                                    quibusdam repudiandae sequi? Iste?</Text>
+                                <Text className={styles.text}>APAC promotes and shares data science knowledge to inspire its members and collaborates with industry experts to hold talks, workshops as well as competitions to bring interesting insights to curious minds who are interested in data science.</Text>
                             </Box>
                             <Box className={styles.half} flexBasis={'50%'}>
                                 <Heading as={'h2'}>Vision</Heading>
-                                <Text className={styles.text}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus architecto at consectetur doloribus eveniet, excepturi iure
-                                    necessitatibus, perferendis, perspiciatis porro sed ullam vero. A odio perspiciatis
-                                    quibusdam repudiandae sequi? Iste?</Text>
+                                <Text className={styles.text}>To bring exposure on the potential capabilities of data science in our data-driven world to students of APU.</Text>
                             </Box>
                         </Flex>
                     </Box>
-                    <Box textAlign={'center'} className={styles['quote-wrapper']} mt={'4rem'}>
+                    <Box textAlign={'center'} className={styles['quote-wrapper']} mt={'4rem'} data-aos={'fade-up'}>
                         <blockquote className={styles.blockquote}>
                             <p>
                                 Established in 2019 aiming
@@ -164,5 +154,11 @@ export default function About() {
             <ProfileDialog isOpen={isOpen} onClose={onClose} name={selectedCommittee.name}/>
         </div>
     )
+}
+
+export async function getServerSideProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    }
 }
 

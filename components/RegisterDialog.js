@@ -38,7 +38,7 @@ export default function RegisterDialog(props) {
                 setSubmitting(false);
                 if (response.status == 201) {
                     setMessage("Registered successfully! Please wait while we process your request, and we will " +
-                        "send an email to notify you shortly.");
+                        "send an email to notify you shortly. Remember to check your spam emails!");
                     setState(true);
                     onOpen();
                     reset();
