@@ -11,6 +11,7 @@ const committees = [
         instagram: { href: "https://www.instagram.com/shen_yien/", name: "shen_yien" },
         website: { href: "https://shenyien.cyou/", name: "shenyien.cyou" },
         github: { href: "https://github.com/HohShenYien", name: "HohShenYien" },
+        seq: 1
     },
     {
         name: 'Lee Pei Qi',
@@ -54,12 +55,20 @@ const committees = [
         position: "Design Team",
         img: 'https://i.imgur.com/RuKFoLRl.jpg',
         lazy: 'https://i.imgur.com/RuKFoLRt.jpg',
+        email: "devanasokan@gmail.com",
+        description: "Semi-depressed 18 year old guy that says \"SIUUU\" way too much, also has a mild South London accent that he can't control",
+        facebook: { href: "https://www.facebook.com/devan.asokan/", name: "Devan Asokan" },
+        linkedin: { href: "https://www.linkedin.com/in/devan-asokan-11637024a/", name: "Devan Asokan" },
+        instagram: { href: "https://www.instagram.com/deev1209/", name: "deev1209" },
     },
     {
         name: 'Foo Yau Yit',
         position: "Design Team",
         img: 'https://i.imgur.com/OjYkmHml.jpg',
         lazy: 'https://i.imgur.com/OjYkmHmt.jpg',
+        email: "desmondfoo0610@gmail.com",
+        description: "Ambitious Data Analytics student",
+        linkedin: { href: "https://www.linkedin.com/in/desmond-foo-a42b851aa/", name: "Desmond Foo" },
     },
     {
         name: 'Loricson Chia',

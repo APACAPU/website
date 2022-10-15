@@ -1,6 +1,14 @@
 const events = {
     2022: [
         {
+            name: "APAC Hangout",
+            date: "02 September 2022",
+            description: "A physical meet up where APAC members get to know each other and play games together.",
+            lazy: "https://i.imgur.com/1d9eJfqt.jpg",
+            img: "https://i.imgur.com/1d9eJfql.jpg",
+            link: "https://www.instagram.com/p/ChloGPtJfQB/"
+        },
+        {
             name: "APAC Stakeholders Meeting",
             date: "30 April 2022",
             description: "An internal event where APAC members get to play games together and give feedbacks to the club.",
@@ -15,14 +23,6 @@ const events = {
             lazy: "https://i.imgur.com/tcrEuqVt.png",
             img: "https://i.imgur.com/tcrEuqVl.png",
             link: "https://www.instagram.com/p/CafCDdLJSwj/"
-        },
-        {
-            name: "APAC Hangout",
-            date: "02 September 2022",
-            description: "A physical meet up where APAC members get to know each other and play games together.",
-            lazy: "https://i.imgur.com/1d9eJfq.jpg",
-            img: "https://i.imgur.com/1d9eJfq.jpg",
-            link: "https://www.instagram.com/p/ChloGPtJfQB/"
         },
     ],
     2021: [
