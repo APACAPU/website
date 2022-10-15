@@ -10,11 +10,19 @@ const events = {
         },
         {
             name: "Shopee X APAC Analytics Career Talk",
-            date: "10 March 2021",
+            date: "10 March 2022",
             description: "A collaboration between Shopee and APAC where data analysts from Shopee shared their day-to-day lives and various career opportunities in Shopee.",
             lazy: "https://i.imgur.com/tcrEuqVt.png",
             img: "https://i.imgur.com/tcrEuqVl.png",
             link: "https://www.instagram.com/p/CafCDdLJSwj/"
+        },
+        {
+            name: "APAC Hangout",
+            date: "02 September 2022",
+            description: "A physical meet up where APAC members get to know each other and play games together.",
+            lazy: "https://i.imgur.com/1d9eJfq.jpg",
+            img: "https://i.imgur.com/1d9eJfq.jpg",
+            link: "https://www.instagram.com/p/ChloGPtJfQB/"
         },
     ],
     2021: [
